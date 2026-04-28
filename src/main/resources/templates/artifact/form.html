@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<h2>Artifact Form</h2>
+
+<form th:action="@{/artifacts/save}" th:object="${artifact}" method="post">
+
+  <input type="hidden" th:field="*{id}" />
+
+  Name:
+  <input type="text" th:field="*{name}" />
+  <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color:red"></div>
+
+  <br/>
+
+  Origin:
+  <input type="text" th:field="*{origin}" />
+  <div th:if="${#fields.hasErrors('origin')}" th:errors="*{origin}" style="color:red"></div>
+
+  <br/>
+
+  Date:
+  <input type="date" th:field="*{date}" />
+  <div th:if="${#fields.hasErrors('date')}" th:errors="*{date}" style="color:red"></div>
+
+  <br/>
+
+  <button type="submit">Save</button>
+</form>
+
+</body>
+</html>

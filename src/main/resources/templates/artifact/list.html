@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="/artifacts/add">Add</a>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Origin</th>
+        <th>Date</th>
+        <th>Action</th>
+    </tr>
+    <p th:if="${list.content.size() == 0}"> Khong co du lieu</p>
+    <tr th:each="item : ${list.content}">
+        <td th:text="${item.id}"></td>
+        <td th:text="${item.name}"></td>
+        <td th:text="${item.origin}"></td>
+        <td th:text="${item.date}"></td>
+        <td>
+            <a href="@{'/artifacts/edit' + ${item.id}">Edit</a>
+            <a href="@{'/artifacts/delete' + ${item.id}" onclick="return confirm('Delete')">Delete</a>
+
+        </td>
+    </tr>
+</table>
+</body>
+</html>
